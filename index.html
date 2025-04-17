@@ -2,38 +2,54 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Прошивки для авто</title>
+  <title>Магазин прошивок</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
-    .brand { margin: 10px 0; cursor: pointer; font-weight: bold; }
-    .firmware { margin-left: 20px; }
+    body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
+    h1, h2 { color: #00ffaa; }
+    .car { margin-bottom: 40px; }
+    .firmware { background: #222; padding: 10px; margin: 10px 0; border-radius: 8px; }
+    .btn {
+      background: #00ffaa;
+      color: #000;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Выберите марку авто</h1>
-  <div id="brands"></div>
 
-  <script>
-    const data = {
-      Hyundai: ["EGR OFF", "DPF OFF", "Stage 1"],
-      Toyota: ["IMMO OFF", "Stage 2", "SCR OFF"],
-      Howo: ["Torque Boost", "Fuel Efficiency"]
-    };
+  <h1>Магазин прошивок для авто</h1>
 
-    const brandsDiv = document.getElementById('brands');
-    for (let brand in data) {
-      let el = document.createElement('div');
-      el.className = 'brand';
-      el.textContent = brand;
-      el.onclick = () => {
-        el.nextSibling && el.nextSibling.remove();
-        let list = document.createElement('div');
-        list.className = 'firmware';
-        list.innerHTML = data[brand].map(f => `<div>${f}</div>`).join('');
-        el.after(list);
-      };
-      brandsDiv.appendChild(el);
-    }
-  </script>
+  <div class="car">
+    <h2>Hyundai</h2>
+    <div class="firmware">
+      Elantra Stage 1 - $50
+      <a class="btn" href="https://www.paypal.com/paypalme/ТВОЙ_ЛОГИН/50" target="_blank">Купить</a>
+    </div>
+    <div class="firmware">
+      Solaris ECO - $40
+      <a class="btn" href="https://www.paypal.com/paypalme/ТВОЙ_ЛОГИН/40" target="_blank">Купить</a>
+    </div>
+  </div>
+
+  <div class="car">
+    <h2>Toyota</h2>
+    <div class="firmware">
+      Camry Stage 2 - $60
+      <a class="btn" href="https://www.paypal.com/paypalme/ТВОЙ_ЛОГИН/60" target="_blank">Купить</a>
+    </div>
+  </div>
+
+  <div class="car">
+    <h2>Howo</h2>
+    <div class="firmware">
+      HOWO Euro 5 Torque Boost - $80
+      <a class="btn" href="https://www.paypal.com/paypalme/ТВОЙ_ЛОГИН/80" target="_blank">Купить</a>
+    </div>
+  </div>
+
 </body>
 </html>
