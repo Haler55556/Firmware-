@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Прошивки для авто</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+    .brand { margin: 10px 0; cursor: pointer; font-weight: bold; }
+    .firmware { margin-left: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Выберите марку авто</h1>
+  <div id="brands"></div>
+
+  <script>
+    const data = {
+      Hyundai: ["EGR OFF", "DPF OFF", "Stage 1"],
+      Toyota: ["IMMO OFF", "Stage 2", "SCR OFF"],
+      Howo: ["Torque Boost", "Fuel Efficiency"]
+    };
+
+    const brandsDiv = document.getElementById('brands');
+    for (let brand in data) {
+      let el = document.createElement('div');
+      el.className = 'brand';
+      el.textContent = brand;
+      el.onclick = () => {
+        el.nextSibling && el.nextSibling.remove();
+        let list = document.createElement('div');
+        list.className = 'firmware';
+        list.innerHTML = data[brand].map(f => `<div>${f}</div>`).join('');
+        el.after(list);
+      };
+      brandsDiv.appendChild(el);
+    }
+  </script>
+</body>
+</html>
